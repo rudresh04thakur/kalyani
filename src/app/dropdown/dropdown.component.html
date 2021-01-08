@@ -1,0 +1,16 @@
+<div [formGroup]="mainForm">
+<input type="text"  formControlName="majorHead" name="majorHead" (change)="loadMajorHead($event.target.value)" placeholder="Major Head *">
+
+<select formControlName="subMajorHead" name="subMajorHead" (change)="loadMinorHead($event.target.value)">
+    <option *ngFor="let subM of subMajorHeadOptions" value="{{subM.id}}">{{subM.name}}</option>
+</select>
+
+<select formControlName="minorHead" name="minorHead" (change)="loadSubHead($event.target.value)">
+    <option *ngFor="let mH of minorHeadOptions" value="{{mH.id}}">{{mH.minorHeadName}}</option>
+</select>
+
+<select formControlName="subHead" name="subHead">
+    <option *ngFor="let sH of subHeadOptions" value="{{sH.id}}">{{sH.subHeadName}}</option>
+</select>
+</div>
+
