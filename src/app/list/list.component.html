@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userList">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>
+                <a class="btn btn-success" routerLink="edit/{{user.id}}">E</a>
+                <a class="btn btn-info" routerLink="view/{{user.id}}">V</a>
+                <button class="btn btn-danger" (click)="delete(user.id)">D</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<router-outlet></router-outlet>

@@ -1,0 +1,29 @@
+<form [formGroup]="edit" (ngSubmit)="update(edit.value)" class="form col-md-6 offset-3">
+    <div class="form-group">
+        <input type="text" name="id" readonly placeholder="ID" class="form-control" [formControl]="edit.controls['id']">
+    </div>
+    <div class="form-group">
+        <input type="text" name="name" placeholder="Name" class="form-control" [formControl]="edit.controls['name']">
+    </div>
+    <div class="form-group">
+        <input type="text" name="mobile" placeholder="Mobile" class="form-control" [formControl]="edit.controls['mobile']">
+    </div>
+    <div class="form-group">
+        <input type="email" name="email" placeholder="Email" class="form-control" [formControl]="edit.controls['email']">
+    </div>
+    <div class="form-group">
+        <input type="text" name="password" placeholder="Password" class="form-control" [formControl]="edit.controls['password']">
+    </div>
+    <div class="form-group">
+        <select class="form-control" name="status" [formControl]="edit.controls['status']">
+            <option value="0">Active</option>
+            <option value="1">Block</option>
+        </select>
+    </div>
+    <div class="form-group float-rigth">
+        <button class="btn btn-success" type="submit">Update</button>&nbsp;&nbsp;
+        <!-- <button class="btn btn-danger" type="reset">Reset</button> -->
+        <input type="reset" class="btn btn-danger" value="Reset"/>
+    </div>
+    <div class="clearfix"></div>
+</form>
