@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
 
   loginUser(data:any){
     this._ser.login(data).subscribe((res)=>{
+      this._ser.setToken(res['token']);
+      this._ser.isLogin();
       console.log(res)
     })
   }

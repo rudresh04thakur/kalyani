@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { EditComponent } from './edit/edit.component';
 import { HomeComponent } from './home/home.component';
 import { ListComponent } from './list/list.component';
@@ -13,7 +14,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'home',component:HomeComponent},
-  {path:'list',component:ListComponent,children:[
+  {path:'list',component:ListComponent,canActivate:[AuthGuard], children:[
     {path:'view/:num',component:ViewComponent},
     {path:'edit/:gopal',component:EditComponent}
   ]}

@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { map } from 'rxjs/Operators';
 @Injectable({
   providedIn: 'root'
 })
 export class AllService {
+
+  redirectUrl:any;
 
   constructor(private http:HttpClient) { }
 
@@ -13,7 +15,10 @@ export class AllService {
   }
 
   login(data:any){
-    return this.http.post('http://localhost/12_clinet_api/login.php',data);
+    return this.http.post('http://localhost/12_clinet_api/login.php',data).pipe(map((res)=>{
+      //this.isLogin();
+      return res;
+    }));
   }
 
   
@@ -32,5 +37,18 @@ export class AllService {
 
   update(data:any){
     return this.http.post('http://localhost/12_clinet_api/update.php',data);
+  }
+
+  setToken(token){
+    localStorage.setItem('token',token)
+  }
+
+  isLogin(){
+    const usertoken = localStorage.getItem('token'); 
+    if(usertoken != null){
+      return true;
+    }else{
+      return false;
+    }
   }
 }
