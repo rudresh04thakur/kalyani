@@ -1,16 +1,22 @@
 <nav class="navbar navbar-expand-sm bg-light">
 
     <!-- Links -->
-    <ul class="navbar-nav">
+    <ul class="navbar-nav mr-auto ">
       <li class="nav-item">
         <a class="nav-link" routerLink="/">Home</a>
       </li>
       <li class="nav-item">
+        <a *ngIf="isLogin==true" class="nav-link" routerLink="list">List</a>
+      </li>
+    </ul>
+    
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="isLogin==false">
         <a class="nav-link" routerLink="register">Register</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="login">Login</a>
+        <a *ngIf="isLogin==false" class="nav-link" routerLink="login">Login</a>
+        <a *ngIf="isLogin==true" class="nav-link" routerLink="logout">Logout</a>
       </li>
     </ul>
-  
   </nav>

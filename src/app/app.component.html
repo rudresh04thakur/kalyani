@@ -1,3 +1,8 @@
 <app-header></app-header>
+<span *ngIf="message['text']" style=""
+         class="alert-fixed alert alert-{{message['class']}} alert-dismissible float-rigth">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{message['text']}}
+</span>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

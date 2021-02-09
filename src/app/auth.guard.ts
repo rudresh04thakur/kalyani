@@ -19,10 +19,8 @@ export class AuthGuard implements CanActivate {
     if(this._ser.isLogin()){
       return true;
     }else{
-      return false;
+      this._ser.redirectUrl = routeurl;
+      this._r.navigate(['/login'],{queryParams:{returnUrl:routeurl}});
     }
-
-  this._ser.redirectUrl = routeurl;
-  this._r.navigate(['/login'],{queryParams:{returnUrl:routeurl}});
   }
 }

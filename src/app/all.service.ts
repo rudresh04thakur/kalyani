@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/Operators';
+import { Observable, Subject } from 'rxjs';
+
+
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AllService {
 
   redirectUrl:any;
+  private _message = new Subject<any>();
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    
+  }
 
   register(data:any){
     return this.http.post('http://localhost/12_clinet_api/register.php',data);
@@ -50,5 +58,21 @@ export class AllService {
     }else{
       return false;
     }
+  }
+
+  logout(){
+    localStorage.removeItem('token')
+  }
+
+  setMessage(message: string,uiClass:String) {
+    this._message.next({ 'text': message,'class':uiClass });
+  }
+
+  clearMessages() {
+      this._message.next();
+  }
+
+  getMessage(): Observable<any> {
+      return this._message.asObservable();
   }
 }
